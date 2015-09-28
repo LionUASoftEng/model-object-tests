@@ -1,12 +1,17 @@
 package test_lion_models;
 
+import java.util.UUID;
+
 import org.npc.dataaccess.model.BaseModel;
 import org.npc.models.Employee;
+import org.npc.models.repositories.EmployeeRepository;
 
 public class EmployeeTest {
 
 	public static void main(String[] args) {
 		
+		
+		//saving info to table
 		Employee test = new Employee();
 		test.setFirstName("Donald");
 		test.setLastName("Trump");
@@ -36,11 +41,12 @@ public class EmployeeTest {
 		test2.setClassification("cash");
 		
 		test2.save();
+	
+	
+		//Getting info from table
+		Employee inputEmployee = (new EmployeeRepository()).get((UUID.fromString("f6361f2d-1b1b-484a-a125-3130fe1e12c7")));
 		
-//Not sure how to load a record from the db
-//		Employee test3 = new Employee();
-//		test3.load(rs);
-
+		System.out.println(inputEmployee.getFirstName());
 	}
 
 }
